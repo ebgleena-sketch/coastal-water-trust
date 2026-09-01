@@ -10,13 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CommunityRouteImport } from './routes/community'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as FiscalResponsibilityRouteImport } from './routes/fiscal-responsibility'
+import { Route as GetInvolvedRouteImport } from './routes/get-involved'
 import { Route as MeetLeenaRouteImport } from './routes/meet-leena'
 import { Route as PrioritiesRouteImport } from './routes/priorities'
+import { Route as PromiseRouteImport } from './routes/promise'
 import { Route as WaterRouteImport } from './routes/water'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityRoute = CommunityRouteImport.update({
+  id: '/community',
+  path: '/community',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FiscalResponsibilityRoute = FiscalResponsibilityRouteImport.update({
+  id: '/fiscal-responsibility',
+  path: '/fiscal-responsibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetInvolvedRoute = GetInvolvedRouteImport.update({
+  id: '/get-involved',
+  path: '/get-involved',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MeetLeenaRoute = MeetLeenaRouteImport.update({
@@ -29,6 +60,11 @@ const PrioritiesRoute = PrioritiesRouteImport.update({
   path: '/priorities',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PromiseRoute = PromiseRouteImport.update({
+  id: '/promise',
+  path: '/promise',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WaterRoute = WaterRouteImport.update({
   id: '/water',
   path: '/water',
@@ -37,35 +73,90 @@ const WaterRoute = WaterRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/fiscal-responsibility': typeof FiscalResponsibilityRoute
+  '/get-involved': typeof GetInvolvedRoute
   '/meet-leena': typeof MeetLeenaRoute
   '/priorities': typeof PrioritiesRoute
+  '/promise': typeof PromiseRoute
   '/water': typeof WaterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/fiscal-responsibility': typeof FiscalResponsibilityRoute
+  '/get-involved': typeof GetInvolvedRoute
   '/meet-leena': typeof MeetLeenaRoute
   '/priorities': typeof PrioritiesRoute
+  '/promise': typeof PromiseRoute
   '/water': typeof WaterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/community': typeof CommunityRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
+  '/fiscal-responsibility': typeof FiscalResponsibilityRoute
+  '/get-involved': typeof GetInvolvedRoute
   '/meet-leena': typeof MeetLeenaRoute
   '/priorities': typeof PrioritiesRoute
+  '/promise': typeof PromiseRoute
   '/water': typeof WaterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/meet-leena' | '/priorities' | '/water'
+  fullPaths:
+    | '/'
+    | '/community'
+    | '/contact'
+    | '/donate'
+    | '/fiscal-responsibility'
+    | '/get-involved'
+    | '/meet-leena'
+    | '/priorities'
+    | '/promise'
+    | '/water'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/meet-leena' | '/priorities' | '/water'
-  id: '__root__' | '/' | '/meet-leena' | '/priorities' | '/water'
+  to:
+    | '/'
+    | '/community'
+    | '/contact'
+    | '/donate'
+    | '/fiscal-responsibility'
+    | '/get-involved'
+    | '/meet-leena'
+    | '/priorities'
+    | '/promise'
+    | '/water'
+  id:
+    | '__root__'
+    | '/'
+    | '/community'
+    | '/contact'
+    | '/donate'
+    | '/fiscal-responsibility'
+    | '/get-involved'
+    | '/meet-leena'
+    | '/priorities'
+    | '/promise'
+    | '/water'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CommunityRoute: typeof CommunityRoute
+  ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
+  FiscalResponsibilityRoute: typeof FiscalResponsibilityRoute
+  GetInvolvedRoute: typeof GetInvolvedRoute
   MeetLeenaRoute: typeof MeetLeenaRoute
   PrioritiesRoute: typeof PrioritiesRoute
+  PromiseRoute: typeof PromiseRoute
   WaterRoute: typeof WaterRoute
 }
 
@@ -76,6 +167,41 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community': {
+      id: '/community'
+      path: '/community'
+      fullPath: '/community'
+      preLoaderRoute: typeof CommunityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fiscal-responsibility': {
+      id: '/fiscal-responsibility'
+      path: '/fiscal-responsibility'
+      fullPath: '/fiscal-responsibility'
+      preLoaderRoute: typeof FiscalResponsibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-involved': {
+      id: '/get-involved'
+      path: '/get-involved'
+      fullPath: '/get-involved'
+      preLoaderRoute: typeof GetInvolvedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/meet-leena': {
@@ -92,6 +218,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrioritiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/promise': {
+      id: '/promise'
+      path: '/promise'
+      fullPath: '/promise'
+      preLoaderRoute: typeof PromiseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/water': {
       id: '/water'
       path: '/water'
@@ -104,8 +237,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CommunityRoute: CommunityRoute,
+  ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
+  FiscalResponsibilityRoute: FiscalResponsibilityRoute,
+  GetInvolvedRoute: GetInvolvedRoute,
   MeetLeenaRoute: MeetLeenaRoute,
   PrioritiesRoute: PrioritiesRoute,
+  PromiseRoute: PromiseRoute,
   WaterRoute: WaterRoute,
 }
 export const routeTree = rootRouteImport
