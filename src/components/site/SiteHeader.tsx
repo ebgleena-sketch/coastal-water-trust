@@ -17,7 +17,7 @@ function Wordmark() {
           Leena Ray
         </span>
         <span className="block text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-water">
-          Moulton Niguel Water District
+          Moulton Niguel Water District Board of Director 2026
         </span>
       </span>
     </Link>

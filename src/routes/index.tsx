@@ -67,7 +67,7 @@ function Home() {
         <div className="relative mx-auto max-w-7xl px-5 py-28 md:py-36">
           <div className="max-w-2xl animate-rise">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-teal">
-              Leena for Moulton Niguel
+              Leena Ray for Moulton Niguel Water District Board of Director 2026
             </p>
             <h1 className="mt-5 font-display text-5xl leading-[1.03] text-navy-foreground md:text-6xl">
               Trust. Water. Community.

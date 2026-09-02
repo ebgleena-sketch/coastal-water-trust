@@ -18,7 +18,10 @@ export const Route = createFileRoute("/donate")({
         content:
           "Support Leena Ray for Moulton Niguel Water District Director. Grassroots contributions fund signs, mailers, and neighbor-to-neighbor outreach.",
       },
-      { property: "og:title", content: "Contribute to Leena for Moulton Niguel" },
+      {
+        property: "og:title",
+        content: "Contribute to Leena Ray for Moulton Niguel Water District Board of Director 2026",
+      },
       {
         property: "og:description",
         content: "Every contribution is local, transparent, and neighbor-powered.",
@@ -36,7 +39,16 @@ const impact = [
   "Community coffees and door-to-door outreach",
 ];
 
+const paymentMethods = [
+  { id: "card", label: "Credit / Debit" },
+  { id: "googlepay", label: "Google Pay" },
+  { id: "venmo", label: "Venmo" },
+] as const;
+
+type PaymentMethod = (typeof paymentMethods)[number]["id"];
+
 function Donate() {
+  const [method, setMethod] = useState<PaymentMethod>("card");
   const [amount, setAmount] = useState<number | "other">(100);
   const [custom, setCustom] = useState("");
   const [recurring, setRecurring] = useState(false);
@@ -61,7 +73,7 @@ function Donate() {
         <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">Contribute</p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.08] text-navy-foreground md:text-5xl">
-            Support Leena for Moulton Niguel Water District
+            Support Leena Ray for Moulton Niguel Water District Board of Director 2026
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy-foreground/80">
             This is a grassroots, neighbor-funded campaign. No insiders, no blank checks—just
@@ -178,17 +190,55 @@ function Donate() {
             </fieldset>
 
             <fieldset className="mt-10">
-              <legend className="eyebrow">Payment</legend>
-              <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                <Field
-                  id="card"
-                  label="Card number"
-                  placeholder="1234 5678 9012 3456"
-                  className="sm:col-span-2"
-                />
-                <Field id="exp" label="Expiration" placeholder="MM / YY" />
-                <Field id="cvc" label="CVC" placeholder="123" />
+              <legend className="eyebrow">Payment method</legend>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {paymentMethods.map((m) => {
+                  const active = method === m.id;
+                  return (
+                    <button
+                      key={m.id}
+                      type="button"
+                      onClick={() => setMethod(m.id)}
+                      aria-pressed={active}
+                      className={`flex h-14 items-center justify-center gap-2 rounded-lg border font-display text-base transition-all ${
+                        active
+                          ? "border-amber bg-amber text-amber-foreground shadow-soft"
+                          : "border-border bg-background text-navy hover:border-water hover:text-water"
+                      }`}
+                    >
+                      {m.label}
+                    </button>
+                  );
+                })}
               </div>
+
+              {method === "card" && (
+                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                  <Field
+                    id="card"
+                    label="Card number"
+                    placeholder="1234 5678 9012 3456"
+                    className="sm:col-span-2"
+                  />
+                  <Field id="exp" label="Expiration" placeholder="MM / YY" />
+                  <Field id="cvc" label="CVC" placeholder="123" />
+                </div>
+              )}
+
+              {method === "googlepay" && (
+                <p className="mt-4 rounded-lg border border-border bg-secondary/50 p-4 text-sm leading-relaxed text-muted-foreground">
+                  You'll be redirected to <strong className="text-navy">Google Pay</strong> to
+                  confirm your contribution securely. No card details are stored by the campaign.
+                </p>
+              )}
+
+              {method === "venmo" && (
+                <p className="mt-4 rounded-lg border border-border bg-secondary/50 p-4 text-sm leading-relaxed text-muted-foreground">
+                  You'll be redirected to <strong className="text-navy">Venmo</strong> to approve
+                  your contribution. Please keep your Venmo name matching the donor information
+                  above so we can report it accurately.
+                </p>
+              )}
             </fieldset>
 
             <div className="mt-8 rounded-lg bg-secondary/60 p-4 text-xs leading-relaxed text-muted-foreground">
