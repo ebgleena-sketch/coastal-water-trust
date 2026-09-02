@@ -7,5 +7,7 @@ export const navLinks = [
   { to: "/community", label: "Community" },
   { to: "/promise", label: "My Promise" },
   { to: "/get-involved", label: "Get Involved" },
+  { to: "/donate", label: "Donate" },
   { to: "/contact", label: "Contact" },
 ] as const;
+

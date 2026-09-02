@@ -84,7 +84,11 @@ function Home() {
               <Button asChild variant="onNavy" size="xl">
                 <Link to="/priorities">See my priorities</Link>
               </Button>
+              <Button asChild variant="onNavy" size="xl">
+                <Link to="/donate">Donate</Link>
+              </Button>
             </div>
+
           </div>
         </div>
       </section>
