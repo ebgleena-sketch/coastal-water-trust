@@ -39,7 +39,16 @@ const impact = [
   "Community coffees and door-to-door outreach",
 ];
 
+const paymentMethods = [
+  { id: "card", label: "Credit / Debit" },
+  { id: "googlepay", label: "Google Pay" },
+  { id: "venmo", label: "Venmo" },
+] as const;
+
+type PaymentMethod = (typeof paymentMethods)[number]["id"];
+
 function Donate() {
+  const [method, setMethod] = useState<PaymentMethod>("card");
   const [amount, setAmount] = useState<number | "other">(100);
   const [custom, setCustom] = useState("");
   const [recurring, setRecurring] = useState(false);
