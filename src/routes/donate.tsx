@@ -18,7 +18,10 @@ export const Route = createFileRoute("/donate")({
         content:
           "Support Leena Ray for Moulton Niguel Water District Director. Grassroots contributions fund signs, mailers, and neighbor-to-neighbor outreach.",
       },
-      { property: "og:title", content: "Contribute to Leena for Moulton Niguel" },
+      {
+        property: "og:title",
+        content: "Contribute to Leena Ray for Moulton Niguel Water District Board of Director 2026",
+      },
       {
         property: "og:description",
         content: "Every contribution is local, transparent, and neighbor-powered.",
