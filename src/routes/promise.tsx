@@ -19,7 +19,7 @@ export const Route = createFileRoute("/promise")({
       },
     ],
   }),
-  component: Promise,
+  component: PromisePage,
 });
 
 const promises = [
@@ -36,7 +36,7 @@ const promises = [
   "I will remember that every dollar spent by the District matters to the people who live here.",
 ];
 
-function Promise() {
+function PromisePage() {
   return (
     <>
       <PageHero

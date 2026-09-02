@@ -46,9 +46,13 @@ export function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button asChild variant="amber" size="default" className="hidden sm:inline-flex">
+          <Button asChild variant="outline" size="default" className="hidden lg:inline-flex">
             <Link to="/get-involved">Get Involved</Link>
           </Button>
+          <Button asChild variant="amber" size="default" className="hidden sm:inline-flex">
+            <Link to="/donate">Donate</Link>
+          </Button>
+
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
