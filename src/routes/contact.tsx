@@ -71,7 +71,12 @@ function Contact() {
             <div className="rounded-xl surface-navy p-6">
               <Mail className="h-6 w-6 text-amber" />
               <p className="mt-3 font-display text-lg text-navy-foreground">Email</p>
-              <p className="mt-1 text-sm text-navy-foreground/75">info@leenaformoultonniguel.com</p>
+              <a
+                href="mailto:Ms.Leenaray@gmail.com"
+                className="mt-1 text-sm text-navy-foreground/75 transition-colors hover:text-amber"
+              >
+                Ms.Leenaray@gmail.com
+              </a>
             </div>
             <div className="rounded-xl border border-border bg-card p-6">
               <MapPin className="h-6 w-6 text-water" />
