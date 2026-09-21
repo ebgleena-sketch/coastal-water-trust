@@ -253,6 +253,15 @@ function Donate() {
                     >
                       Ms.LeenaRay@gmail.com
                     </a>
+                    . Donors can connect Zelle to their bank account at{" "}
+                    <a
+                      href="https://www.zellepay.com/get-started"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold text-water underline-offset-2 hover:underline"
+                    >
+                      zellepay.com/get-started
+                    </a>
                     . Please include your name and address in the memo so we can report your
                     contribution accurately under California law.
                   </div>
@@ -267,8 +276,7 @@ function Donate() {
             </div>
 
             <Button type="submit" variant="amber" size="xl" className="mt-6 w-full">
-              Contribute {finalAmount > 0 ? `$${finalAmount.toLocaleString()}` : ""}
-              {recurring && finalAmount > 0 ? " monthly" : ""}
+              Submit donation
             </Button>
 
             <p className="mt-4 flex items-center justify-center gap-2 text-xs text-muted-foreground">
