@@ -20,7 +20,7 @@ function Wordmark() {
           for
         </span>
         <span className="block text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-water">
-          Moulton Niguel Water District Board of Director 2026
+          Moulton Niguel Water District Board of Directors 2026
         </span>
       </span>
     </Link>

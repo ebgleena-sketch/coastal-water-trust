@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, Lock, HeartHandshake } from "lucide-react";
+import { Check, Lock, HeartHandshake, Landmark } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -20,7 +20,7 @@ export const Route = createFileRoute("/donate")({
       },
       {
         property: "og:title",
-        content: "Contribute to Leena Ray for Moulton Niguel Water District Board of Director 2026",
+        content: "Contribute to Leena Ray for Moulton Niguel Water District Board of Directors 2026",
       },
       {
         property: "og:description",
@@ -43,6 +43,7 @@ const paymentMethods = [
   { id: "card", label: "Credit / Debit" },
   { id: "googlepay", label: "Google Pay" },
   { id: "venmo", label: "Venmo" },
+  { id: "zelle", label: "Bank (Zelle)" },
 ] as const;
 
 type PaymentMethod = (typeof paymentMethods)[number]["id"];
@@ -73,7 +74,7 @@ function Donate() {
         <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">Contribute</p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.08] text-navy-foreground md:text-5xl">
-            Support Leena Ray for Moulton Niguel Water District Board of Director 2026
+            Support Leena Ray for Moulton Niguel Water District Board of Directors 2026
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy-foreground/80">
             This is a grassroots, neighbor-funded campaign. No insiders, no blank checks—just
@@ -191,7 +192,7 @@ function Donate() {
 
             <fieldset className="mt-10">
               <legend className="eyebrow">Payment method</legend>
-              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+              <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 {paymentMethods.map((m) => {
                   const active = method === m.id;
                   return (
@@ -239,6 +240,24 @@ function Donate() {
                   above so we can report it accurately.
                 </p>
               )}
+
+              {method === "zelle" && (
+                <div className="mt-4 grid gap-3 rounded-lg border border-border bg-secondary/50 p-4 text-sm leading-relaxed text-muted-foreground sm:grid-cols-[auto_1fr] sm:items-start sm:gap-4">
+                  <Landmark className="h-6 w-6 text-water" />
+                  <div>
+                    Send your contribution directly from your bank using{" "}
+                    <strong className="text-navy">Zelle</strong> to{" "}
+                    <a
+                      href="mailto:Ms.Leenaray@gmail.com"
+                      className="font-semibold text-water underline-offset-2 hover:underline"
+                    >
+                      Ms.LeenaRay@gmail.com
+                    </a>
+                    . Please include your name and address in the memo so we can report your
+                    contribution accurately under California law.
+                  </div>
+                </div>
+              )}
             </fieldset>
 
             <div className="mt-8 rounded-lg bg-secondary/60 p-4 text-xs leading-relaxed text-muted-foreground">
@@ -278,8 +297,14 @@ function Donate() {
               <p className="eyebrow">Prefer to mail a check?</p>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Checks may be made payable to <strong className="text-navy">Leena Ray for
-                Moulton Niguel Water District 2026</strong>. Contact us for the mailing address and
-                we'll send it right over.
+                Moulton Niguel Water District 2026</strong>.{" "}
+                <a
+                  href="mailto:Ms.Leenaray@gmail.com?subject=Mailing%20address%20for%20check%20donation"
+                  className="font-semibold text-water underline-offset-2 hover:underline"
+                >
+                  Email us
+                </a>{" "}
+                for the mailing address and we'll send it right over.
               </p>
             </div>
 
