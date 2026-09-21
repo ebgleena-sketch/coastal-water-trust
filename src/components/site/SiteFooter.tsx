@@ -9,7 +9,7 @@ export function SiteFooter() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <p className="font-display text-2xl text-navy-foreground">
-              Leena Ray for Moulton Niguel Water District Board of Director 2026
+              Leena Ray for Moulton Niguel Water District Board of Directors 2026
             </p>
             <span className="rule-amber mt-4" />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-navy-foreground/70">

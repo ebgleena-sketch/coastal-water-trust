@@ -20,7 +20,7 @@ export const Route = createFileRoute("/donate")({
       },
       {
         property: "og:title",
-        content: "Contribute to Leena Ray for Moulton Niguel Water District Board of Director 2026",
+        content: "Contribute to Leena Ray for Moulton Niguel Water District Board of Directors 2026",
       },
       {
         property: "og:description",
@@ -73,7 +73,7 @@ function Donate() {
         <div className="mx-auto max-w-6xl px-5 py-16 md:py-20">
           <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal">Contribute</p>
           <h1 className="mt-4 max-w-3xl font-display text-4xl leading-[1.08] text-navy-foreground md:text-5xl">
-            Support Leena Ray for Moulton Niguel Water District Board of Director 2026
+            Support Leena Ray for Moulton Niguel Water District Board of Directors 2026
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy-foreground/80">
             This is a grassroots, neighbor-funded campaign. No insiders, no blank checks—just
