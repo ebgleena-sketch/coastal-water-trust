@@ -112,6 +112,17 @@ function GetInvolved() {
           <Button type="submit" variant="navy" size="xl" className="mt-8 w-full sm:w-auto">
             Count me in
           </Button>
+
+          <p className="mt-4 text-sm text-muted-foreground">
+            Prefer to reach out directly? Email{" "}
+            <a
+              href="mailto:Ms.Leenaray@gmail.com"
+              className="font-semibold text-water underline-offset-2 hover:underline"
+            >
+              Ms.LeenaRay@gmail.com
+            </a>{" "}
+            and Leena will get back to you personally.
+          </p>
         </form>
       </Section>
 
