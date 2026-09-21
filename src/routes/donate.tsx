@@ -89,7 +89,6 @@ function Donate() {
           <form
             onSubmit={handleSubmit}
             className="rounded-xl bg-card p-6 shadow-lift md:p-9"
-            noValidate
           >
             <fieldset>
               <legend className="eyebrow">Choose an amount</legend>
@@ -351,7 +350,14 @@ function Field({
         {label}
         {required ? <span className="text-amber"> *</span> : null}
       </Label>
-      <Input id={id} name={id} type={type} placeholder={placeholder} className="h-11" />
+      <Input
+        id={id}
+        name={id}
+        type={type}
+        placeholder={placeholder}
+        required={required}
+        className="h-11"
+      />
     </div>
   );
 }
