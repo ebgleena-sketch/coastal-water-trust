@@ -43,6 +43,7 @@ const paymentMethods = [
   { id: "card", label: "Credit / Debit" },
   { id: "googlepay", label: "Google Pay" },
   { id: "venmo", label: "Venmo" },
+  { id: "zelle", label: "Bank (Zelle)" },
 ] as const;
 
 type PaymentMethod = (typeof paymentMethods)[number]["id"];
