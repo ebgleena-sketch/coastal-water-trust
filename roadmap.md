@@ -6,3 +6,4 @@
 - [x] Donate page (Numero-style contribution flow, on-brand)
 - [x] Donate button in hero next to "See my priorities" and in header
 - [ ] Enable built-in Stripe payments and wire real card donations on /donate
+- [ ] Explain how to put the site on Hostinger (publish + custom domain vs self-host export)
