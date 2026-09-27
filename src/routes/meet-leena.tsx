@@ -10,7 +10,7 @@ export const Route = createFileRoute("/meet-leena")({
       {
         name: "description",
         content:
-          "Leena Ray is a Moulton Niguel resident, mother of twins, and MBA business leader running for Water District Director.",
+          "Leena Ray is a Moulton Niguel resident, mother of two kids, and MBA business leader running for Water District Director.",
       },
       { property: "og:title", content: "Meet Leena Ray" },
       {
@@ -49,7 +49,7 @@ function MeetLeena() {
             MBA.
           </p>
           <p>
-            Today, my life is centered around my family and my community. As a mother raising twins
+            Today, my life is centered around my family and my community. As a mother raising two kids,
             and caring for my family, I understand how much families value stability, affordability
             and knowing that the people responsible for important public services are doing their
             jobs responsibly.
