@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Use semantic color tokens globally; the campaign palette is rich royal blue, vivid water blue, aqua, and crisp white to match the approved reference.
