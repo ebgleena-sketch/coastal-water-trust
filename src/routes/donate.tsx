@@ -239,22 +239,19 @@ function Donate() {
               </div>
 
               {method === "card" && (
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
-                  <Field
-                    id="card"
-                    label="Card number"
-                    placeholder="1234 5678 9012 3456"
-                    className="sm:col-span-2"
-                  />
-                  <Field id="exp" label="Expiration" placeholder="MM / YY" />
-                  <Field id="cvc" label="CVC" placeholder="123" />
-                </div>
+                <p className="mt-4 rounded-lg border border-border bg-secondary/50 p-4 text-sm leading-relaxed text-muted-foreground">
+                  After you submit, you'll be taken to <strong className="text-navy">Stripe's
+                  secure checkout</strong> to enter your card details. Your card information never
+                  touches this website.
+                </p>
               )}
 
               {method === "googlepay" && (
                 <p className="mt-4 rounded-lg border border-border bg-secondary/50 p-4 text-sm leading-relaxed text-muted-foreground">
-                  You'll be redirected to <strong className="text-navy">Google Pay</strong> to
-                  confirm your contribution securely. No card details are stored by the campaign.
+                  After you submit, you'll be taken to <strong className="text-navy">Stripe's
+                  secure checkout</strong>, where you can pay with{" "}
+                  <strong className="text-navy">Google Pay</strong> on supported devices. No card
+                  details are stored by the campaign.
                 </p>
               )}
 
@@ -300,8 +297,8 @@ function Donate() {
               entity. Contributions are not tax deductible.
             </div>
 
-            <Button type="submit" variant="amber" size="xl" className="mt-6 w-full">
-              Submit donation
+            <Button type="submit" variant="amber" size="xl" className="mt-6 w-full" disabled={submitting}>
+              {submitting ? "Opening secure checkout…" : "Submit donation"}
             </Button>
 
             <p className="mt-4 flex items-center justify-center gap-2 text-xs text-muted-foreground">
