@@ -76,6 +76,7 @@ function Donate() {
             firstName: String(form.get("firstName") ?? ""),
             lastName: String(form.get("lastName") ?? ""),
             email: String(form.get("email") ?? ""),
+            origin: window.location.origin,
           },
         });
         window.location.href = url;

@@ -7,6 +7,7 @@ const donationSchema = z.object({
   firstName: z.string().min(1),
   lastName: z.string().min(1),
   email: z.string().email(),
+  origin: z.string().url(),
 });
 
 // Creates a Stripe Checkout Session via the REST API (Worker-safe, no SDK needed)
@@ -19,7 +20,7 @@ export const createDonationCheckout = createServerFn({ method: "POST" })
       throw new Error("Stripe is not configured yet.");
     }
 
-    const origin = process.env["SITE_URL"] ?? "https://www.voteleenaray.com";
+    const origin = data.origin.replace(/\/$/, "");
     const cents = Math.round(data.amount * 100);
     const donorName = `${data.firstName} ${data.lastName}`.trim();
 
