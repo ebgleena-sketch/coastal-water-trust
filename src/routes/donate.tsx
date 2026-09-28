@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Check, Lock, HeartHandshake, Landmark } from "lucide-react";
 import { toast } from "sonner";
 
+import { createDonationCheckout } from "@/lib/donate.functions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -53,15 +54,40 @@ function Donate() {
   const [amount, setAmount] = useState<number | "other">(100);
   const [custom, setCustom] = useState("");
   const [recurring, setRecurring] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const finalAmount = amount === "other" ? Number(custom) || 0 : amount;
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (finalAmount <= 0) {
       toast.error("Please choose or enter a contribution amount.");
       return;
     }
+
+    if (method === "card" || method === "googlepay") {
+      const form = new FormData(e.currentTarget);
+      setSubmitting(true);
+      try {
+        const { url } = await createDonationCheckout({
+          data: {
+            amount: finalAmount,
+            recurring,
+            firstName: String(form.get("firstName") ?? ""),
+            lastName: String(form.get("lastName") ?? ""),
+            email: String(form.get("email") ?? ""),
+          },
+        });
+        window.location.href = url;
+      } catch (error) {
+        toast.error("We couldn't start the secure checkout.", {
+          description: error instanceof Error ? error.message : "Please try again.",
+        });
+        setSubmitting(false);
+      }
+      return;
+    }
+
     toast.success(
       `Thank you! Your $${finalAmount.toLocaleString()}${recurring ? "/month" : ""} contribution details were received.`,
       { description: "Our team will follow up to confirm your contribution." },

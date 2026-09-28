@@ -19,6 +19,7 @@ import { Route as MeetLeenaRouteImport } from './routes/meet-leena'
 import { Route as PrioritiesRouteImport } from './routes/priorities'
 import { Route as PromiseRouteImport } from './routes/promise'
 import { Route as WaterRouteImport } from './routes/water'
+import { Route as DonateSuccessRouteImport } from './routes/donate/success'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -70,43 +71,51 @@ const WaterRoute = WaterRouteImport.update({
   path: '/water',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DonateSuccessRoute = DonateSuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => DonateRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
-  '/donate': typeof DonateRoute
+  '/donate': typeof DonateRouteWithChildren
   '/fiscal-responsibility': typeof FiscalResponsibilityRoute
   '/get-involved': typeof GetInvolvedRoute
   '/meet-leena': typeof MeetLeenaRoute
   '/priorities': typeof PrioritiesRoute
   '/promise': typeof PromiseRoute
   '/water': typeof WaterRoute
+  '/donate/success': typeof DonateSuccessRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
-  '/donate': typeof DonateRoute
+  '/donate': typeof DonateRouteWithChildren
   '/fiscal-responsibility': typeof FiscalResponsibilityRoute
   '/get-involved': typeof GetInvolvedRoute
   '/meet-leena': typeof MeetLeenaRoute
   '/priorities': typeof PrioritiesRoute
   '/promise': typeof PromiseRoute
   '/water': typeof WaterRoute
+  '/donate/success': typeof DonateSuccessRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/community': typeof CommunityRoute
   '/contact': typeof ContactRoute
-  '/donate': typeof DonateRoute
+  '/donate': typeof DonateRouteWithChildren
   '/fiscal-responsibility': typeof FiscalResponsibilityRoute
   '/get-involved': typeof GetInvolvedRoute
   '/meet-leena': typeof MeetLeenaRoute
   '/priorities': typeof PrioritiesRoute
   '/promise': typeof PromiseRoute
   '/water': typeof WaterRoute
+  '/donate/success': typeof DonateSuccessRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -121,6 +130,7 @@ export interface FileRouteTypes {
     | '/priorities'
     | '/promise'
     | '/water'
+    | '/donate/success'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/priorities'
     | '/promise'
     | '/water'
+    | '/donate/success'
   id:
     | '__root__'
     | '/'
@@ -145,13 +156,14 @@ export interface FileRouteTypes {
     | '/priorities'
     | '/promise'
     | '/water'
+    | '/donate/success'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CommunityRoute: typeof CommunityRoute
   ContactRoute: typeof ContactRoute
-  DonateRoute: typeof DonateRoute
+  DonateRoute: typeof DonateRouteWithChildren
   FiscalResponsibilityRoute: typeof FiscalResponsibilityRoute
   GetInvolvedRoute: typeof GetInvolvedRoute
   MeetLeenaRoute: typeof MeetLeenaRoute
@@ -232,14 +244,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WaterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/donate/success': {
+      id: '/donate/success'
+      path: '/success'
+      fullPath: '/donate/success'
+      preLoaderRoute: typeof DonateSuccessRouteImport
+      parentRoute: typeof DonateRoute
+    }
   }
 }
+
+interface DonateRouteChildren {
+  DonateSuccessRoute: typeof DonateSuccessRoute
+}
+
+const DonateRouteChildren: DonateRouteChildren = {
+  DonateSuccessRoute: DonateSuccessRoute,
+}
+
+const DonateRouteWithChildren =
+  DonateRoute._addFileChildren(DonateRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CommunityRoute: CommunityRoute,
   ContactRoute: ContactRoute,
-  DonateRoute: DonateRoute,
+  DonateRoute: DonateRouteWithChildren,
   FiscalResponsibilityRoute: FiscalResponsibilityRoute,
   GetInvolvedRoute: GetInvolvedRoute,
   MeetLeenaRoute: MeetLeenaRoute,
